@@ -522,6 +522,26 @@ export const verifyPasswordResetCode = (dispatch, firebase, code) => {
 }
 
 /**
+ * @description do the email verification
+ * @param {Function} dispatch - Action dispatch function
+ * @param {Object} firebase - Internal firebase object
+ * @param {String} code - code that came on email
+ * @return {Promise} email - Email associated with verification code
+ * @private
+ */
+export const verifyEmail = (dispatch, firebase, code) => {
+  dispatchLoginError(dispatch, null)
+  return firebase.auth()
+    .applyActionCode(code)
+    .catch((err) => {
+      if (err) {
+        dispatchLoginError(dispatch, err)
+      }
+      return Promise.reject(err)
+    })
+}
+
+/**
  * @description Update user profile
  * @param {Function} dispatch - Action dispatch function
  * @param {Object} firebase - Internal firebase object

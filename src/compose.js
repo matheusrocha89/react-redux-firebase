@@ -502,6 +502,15 @@ export default (fbConfig, otherConfig) => next =>
 
     /**
      * @private
+     * @description Verify the email
+     * @param {String} code - verify email code
+     * @return {Promise} Containing user auth info
+     */
+    const verifyEmail = (code) =>
+      authActions.verifyEmail(dispatch, instance, code)
+
+    /**
+     * @private
      * @description Update the currently logged in user's profile object
      * @param {String} profileUpdate - Changes to apply to profile
      * @return {Promise}
@@ -598,6 +607,7 @@ export default (fbConfig, otherConfig) => next =>
       resetPassword,
       confirmPasswordReset,
       verifyPasswordResetCode,
+      verifyEmail,
       watchEvent,
       unWatchEvent,
       updateProfile,
