@@ -203,6 +203,16 @@ describe('Store Enhancer', () => {
       })
     })
 
+    describe('verifyEmail', () => {
+      it('throws for invalid code', () => {
+        try {
+          helpers.verifyEmail({ code: 'test' })
+        } catch (err) {
+          expect(err).to.be.an.object
+        }
+      })
+    })
+
     describe('updateProfile', () => {
       it('acccepts an object', () => {
         expect(helpers.updateProfile(profileData))
@@ -247,6 +257,16 @@ describe('Store Enhancer', () => {
       it('exists', () => {
         try {
           helpers.verifyPasswordResetCode({ code: 'test', password: 'test' })
+        } catch (err) {
+          expect(err).to.be.an.object
+        }
+      })
+    })
+
+    describe('verifyEmail', () => {
+      it('exists', () => {
+        try {
+          helpers.verifyEmail({ code: 'test' })
         } catch (err) {
           expect(err).to.be.an.object
         }

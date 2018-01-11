@@ -11,7 +11,8 @@ import {
   createUser,
   resetPassword,
   confirmPasswordReset,
-  verifyPasswordResetCode
+  verifyPasswordResetCode,
+  verifyEmail
 } from '../../../src/actions/auth'
 import { promisesForPopulate } from '../../../src/utils/populate'
 
@@ -84,6 +85,9 @@ const fakeFirebase = {
         ? Promise.reject({code: code}) // eslint-disable-line prefer-promise-reject-errors
         : Promise.resolve(),
     verifyPasswordResetCode: (code) => code === 'error'
+      ? Promise.reject({ code: 'some' }) // eslint-disable-line prefer-promise-reject-errors
+      : Promise.resolve('success'),
+    applyActionCode: (code) => code === 'error'
       ? Promise.reject({ code: 'some' }) // eslint-disable-line prefer-promise-reject-errors
       : Promise.resolve('success')
   })
@@ -411,6 +415,23 @@ describe('Actions: Auth', () => {
       it('other', async () => {
         try {
           res = await verifyPasswordResetCode(dispatch, fakeFirebase, 'error')
+        } catch (err) {
+          expect(err.code).to.be.a.string
+        }
+      })
+    })
+  })
+
+  describe('verifyEmail', () => {
+    it('resolves for valid code', async () => {
+      res = await verifyEmail(dispatch, fakeFirebase, 'test')
+      expect(res).to.equal('success')
+    })
+
+    describe('handles error code: ', () => {
+      it('other', async () => {
+        try {
+          res = await verifyEmail(dispatch, fakeFirebase, 'error')
         } catch (err) {
           expect(err.code).to.be.a.string
         }
