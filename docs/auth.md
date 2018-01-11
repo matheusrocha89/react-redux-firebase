@@ -259,3 +259,24 @@ firebase.verifyPasswordResetCode('some reset code')
 [promise-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [string-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [object-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+## verifyEmail(code)
+Verify the email code
+
+Calls Firebase's `firebase.auth().verifyEmail()`. If there is an error, it is added into redux state under `state.firebase.authError`.
+
+##### Examples
+
+```js
+firebase.verifyEmail('email verification code')
+```
+
+##### Parameters
+  * `code` [**String**][string-url] - Email verification code
+
+##### Returns
+  [**Promise**][promise-url] - Email address
+
+[promise-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[string-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+[object-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object

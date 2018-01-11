@@ -203,7 +203,7 @@ so examples have not yet been created, and it may not work as expected.
 
 -   `type` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Type of watch event
 -   `dbPath` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Database path on which to setup watch event
--   `path`  
+-   `path`
 -   `storeAs` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of listener results within redux store
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)**
@@ -285,6 +285,16 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Verify that a password reset code from a password reset
 email is valid
+
+**Parameters**
+
+-   `code` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Password reset code to verify
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** Containing user auth info
+
+## verifyEmail
+
+Verify code sent by email to verify if the email is valid
 
 **Parameters**
 
